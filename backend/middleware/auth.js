@@ -26,10 +26,10 @@ module.exports.isAuthenticated = CatchAsyncError(async (req, res, next) => {
       console.log("user not found");
     }
 
-    if (!user) {
+    if (!req.user) {
       throw new ErrorHandler("User not found", 404);
     }
-    console.log(error);
+    // console.log(error); error is not defined in this scope
     next();
   } catch (error) {
     console.log("authentication failed"); //error
